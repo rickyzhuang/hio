@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alibaba.dao.BabyMapper">    
+ 	<!-- 查询小孩表 -->
+	<select id="findBabyByid"    resultType="com.alibaba.model.Baby">
+		SELECT
+		baby.id,
+		baby.height,
+		baby.weight,
+		baby.head,
+		baby.recode_date,
+		baby.remark,
+		baby.operator,
+		baby.create_time,
+		baby.modifitor,
+		baby.modify_time
+		FROM baby  where 1=1 
+		and   id = #{id}
+		
+	</select>
+	
+	
+	<select id="getDataGridTotal"    resultType="long">
+		select count(1) from baby where  1=1
+	</select>
+
+	<select id="getDataGridBaby"  parameterType="com.alibaba.model.easyui.PageHelper"   resultType="com.alibaba.model.Baby">
+		SELECT
+		baby.id,
+		baby.height,
+		baby.weight,
+		baby.head,
+		baby.recode_date as recodeDate,
+		baby.remark,
+		baby.operator,
+		baby.create_time as createTime,
+		baby.modifitor,
+		baby.modify_time as modifyTime 
+		FROM baby  where 1=1 
+        <if test="page > 0">
+            limit #{start},#{end}
+        </if>
+	</select>
+	
+	<insert id="addBaby" useGeneratedKeys="true" keyProperty="id">
+		insert into baby(
+			<trim suffixOverrides=",">
+            <if test="height !=null and height !=''">height,</if>
+            <if test="weight !=null and weight !=''">weight,</if>
+            <if test="head !=null and head !=''">head,</if>
+            <if test="recodeDate !=null and recodeDate !=''">recode_Date,</if>
+            <if test="remark !=null and remark !=''">remark,</if>
+            <if test="operator !=null and operator !=''">operator,</if>
+            <if test="createTime !=null and createTime !=''">create_Time,</if>
+            <if test="modifitor !=null and modifitor !=''">modifitor,</if>
+            <if test="modifyTime !=null and modifyTime !=''">modify_Time</if>
+            </trim>)
+            values(
+            <trim suffixOverrides=",">
+            <if test="height !=null and height !=''">#{height},</if>
+            <if test="weight !=null and weight !=''">#{weight},</if> 
+            <if test="head !=null and head !=''">#{head},</if> 
+            <if test="recodeDate !=null and recodeDate !=''">#{recodeDate},</if> 
+            <if test="remark !=null and remark !=''">#{remark},</if> 
+            <if test="operator !=null and operator !=''">#{operator},</if> 
+            <if test="createTime !=null and createTime !=''">#{createTime},</if> 
+            <if test="modifitor !=null and modifitor !=''">#{modifitor},</if> 
+            <if test="modifyTime !=null and modifyTime !=''">#{modifyTime}</if> 
+            </trim>)
+	</insert>
+	
+    <update id="editBaby">
+    	update baby
+    	<set>
+    		<if test="height !=null and height !=''">height =#{height},</if>
+            <if test="weight !=null and weight !=''">weight =#{weight},</if>
+            <if test="head !=null and head !=''">head=#{head},</if>
+            <if test="recodeDate !=null and recodeDate !=''">recode_Date=#{recodeDate},</if>
+            <if test="remark !=null and remark !=''">remark=#{remark},</if>
+            <if test="operator !=null and operator !=''">operator=#{operator}</if>
+            <if test="createTime !=null and createTime !=''">create_Time=#{createTime},</if>
+            <if test="modifitor !=null and modifitor !=''">modifitor=#{modifitor},</if>
+            <if test="modifyTime !=null and modifyTime !=''">modify_Time=#{modifyTime}</if>
+    	</set>
+    	where id = #{id}
+    </update>
+    
+     <!-- 删除一条记录 -->  
+    <delete id="deleteById" parameterType="int">  
+        delete from baby where id = #{id}  
+    </delete>  
+    
+</mapper>
