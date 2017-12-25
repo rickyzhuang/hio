@@ -16,9 +16,7 @@ import java.util.regex.Pattern;
 
 
 /**
- * String工具类
- * 
- * @author sjf
+ *
  */
 public class StringUtil {
 

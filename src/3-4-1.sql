@@ -5,7 +5,9 @@ Source Database: druid
 Date: 2016/3/4 16:56:26
 */
 
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`druid` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
+USE `druid`;
 -- ----------------------------
 --  Table structure for `baby`
 -- ----------------------------

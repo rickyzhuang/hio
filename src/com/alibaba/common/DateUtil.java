@@ -6,12 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-
 /**
- * 日期工具类
- * 
- * @author Sugar at 2013.7.15
- * 
+ *
  */
 public class DateUtil {
 

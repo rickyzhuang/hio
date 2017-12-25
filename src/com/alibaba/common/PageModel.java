@@ -7,13 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Title: PageModel.java
- * Description:分页对象实体类
- * Copyright: Copyright (c) 2014
- * Company:厦门市智业软件工程有限公司
- * @author chenXiyuan
- * @date 2014-8-26 上午9:57:01
- * @version V1.0
+ *
  */
 @SuppressWarnings("rawtypes")
 public class PageModel implements Serializable, Cloneable {
