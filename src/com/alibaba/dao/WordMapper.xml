@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alibaba.dao.WordMapper">    
+ 	<!-- 查询小孩表 -->
+	<select id="findWordByid"    resultType="com.alibaba.model.Word">
+		SELECT
+		word.id,
+		word.name,
+		word.sound,
+		word.mean,
+		word.frequency,
+		word.recode_date,
+		word.remark,
+		word.operator,
+		word.create_time,
+		word.modifitor,
+		word.modify_time
+		FROM word  where 1=1 
+		and   id = #{id}
+		
+	</select>
+	
+	
+	<select id="getDataGridTotal"    resultType="long">
+		select count(1) from word where  1=1
+	</select>
+
+	<select id="getDataGridWord"  parameterType="com.alibaba.model.easyui.PageHelper"   resultType="com.alibaba.model.Word">
+		SELECT
+		word.id,
+		word.name,
+		word.sound,
+		word.mean,
+		word.frequency,
+		word.recode_date,
+		word.remark,
+		word.operator,
+		word.create_time,
+		word.modifitor,
+		word.modify_time
+		FROM word  where 1=1 
+        <if test="page > 0">
+            limit #{start},#{end}
+        </if>
+	</select>
+	
+	<insert id="addWord" useGeneratedKeys="true" keyProperty="id">
+		insert into word(
+			<trim suffixOverrides=",">
+            <if test="name !=null and name !=''">name,</if>
+            <if test="sound !=null and sound !=''">sound,</if>
+            <if test="mean !=null and mean !=''">mean,</if>
+            <if test="frequency !=null and frequency !=''">frequency,</if>
+            <if test="recodeDate !=null and recodeDate !=''">recode_Date,</if>
+            <if test="remark !=null and remark !=''">remark,</if>
+            <if test="operator !=null and operator !=''">operator,</if>
+            <if test="createTime !=null and createTime !=''">create_Time,</if>
+            <if test="modifitor !=null and modifitor !=''">modifitor,</if>
+            <if test="modifyTime !=null and modifyTime !=''">modify_Time</if>
+            </trim>)
+            values(
+            <trim suffixOverrides=",">
+            <if test="name !=null and name !=''">#{name},</if>
+            <if test="sound !=null and sound !=''">#{sound},</if> 
+            <if test="mean !=null and mean !=''">#{mean},</if> 
+            <if test="frequency !=null and frequency !=''">#{frequency},</if> 
+            <if test="recodeDate !=null and recodeDate !=''">#{recodeDate},</if> 
+            <if test="remark !=null and remark !=''">#{remark},</if> 
+            <if test="operator !=null and operator !=''">#{operator},</if> 
+            <if test="createTime !=null and createTime !=''">#{createTime},</if> 
+            <if test="modifitor !=null and modifitor !=''">#{modifitor},</if> 
+            <if test="modifyTime !=null and modifyTime !=''">#{modifyTime}</if> 
+            </trim>)
+	</insert>
+	
+    <update id="editWord">
+    	update word
+    	<set>
+    		<if test="name !=null and name !=''">name =#{name},</if>
+            <if test="sound !=null and sound !=''">sound =#{sound},</if>
+            <if test="mean !=null and mean !=''">mean=#{mean},</if>
+            <if test="frequency !=null and frequency !=''">frequency=#{frequency},</if>
+            <if test="recodeDate !=null and recodeDate !=''">recode_Date=#{recodeDate},</if>
+            <if test="remark !=null and remark !=''">remark=#{remark},</if>
+            <if test="operator !=null and operator !=''">operator=#{operator}</if>
+            <if test="createTime !=null and createTime !=''">create_Time=#{createTime},</if>
+            <if test="modifitor !=null and modifitor !=''">modifitor=#{modifitor},</if>
+            <if test="modifyTime !=null and modifyTime !=''">modify_Time=#{modifyTime}</if>
+    	</set>
+    	where id = #{id}
+    </update>
+    
+     <!-- 删除一条记录 -->  
+    <delete id="deleteById" parameterType="int">  
+        delete from word where id = #{id}  
+    </delete>  
+    
+</mapper>
