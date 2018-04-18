@@ -4,6 +4,7 @@
 package com.alibaba.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -20,7 +21,7 @@ public interface WordMapper {
 	
 	public Long getDataGridTotal(Word Word);
 
-	public List<Word> getDataGridWord(PageHelper page);
+	public List<Word> getDataGridWord(Map<String,Object> map);
 
 	public void addWord(Word word);
 

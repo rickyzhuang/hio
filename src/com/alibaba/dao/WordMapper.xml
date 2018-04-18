@@ -21,26 +21,32 @@
 	</select>
 	
 	
-	<select id="getDataGridTotal"    resultType="long">
+	<select id="getDataGridTotal"   parameterType="com.alibaba.model.Word"  resultType="long">
 		select count(1) from word where  1=1
+		 <if test="keyword !=null  and keyword !=''">
+            and  ( word.name like  CONCAT('%',#{keyword},'%')   or  word.mean like  CONCAT('%',#{keyword},'%') )
+        </if>
 	</select>
 
-	<select id="getDataGridWord"  parameterType="com.alibaba.model.easyui.PageHelper"   resultType="com.alibaba.model.Word">
+	<select id="getDataGridWord"  parameterType="java.util.Map"   resultType="com.alibaba.model.Word">
 		SELECT
 		word.id,
 		word.name,
 		word.sound,
 		word.mean,
 		word.frequency,
-		word.recode_date,
+		word.recode_date as recodeDate,
 		word.remark,
 		word.operator,
 		word.create_time,
 		word.modifitor,
-		word.modify_time
+		word.modify_time as modifyTime
 		FROM word  where 1=1 
-        <if test="page > 0">
-            limit #{start},#{rows}
+		 <if test="condition.keyword !=null  and condition.keyword !=''">
+            and  ( word.name like  CONCAT('%',#{condition.keyword},'%')   or  word.mean like  CONCAT('%',#{condition.keyword},'%') )
+        </if>
+        <if test="page !=null ">
+            limit #{page.start},#{page.rows}
         </if>
 	</select>
 	

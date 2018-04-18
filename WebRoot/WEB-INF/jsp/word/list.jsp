@@ -16,8 +16,39 @@
 		$('#fm').form('clear');
 		url = path+"/word/addWord";
 		mesTitle = '新增记录成功';
+	} 
+	//加条件   
+    function getSearchConditions() {
+        var searchName = $("#keyword").val().trim();
+
+            if(searchName!=null){
+                var param = [];
+                param.push({
+                    "name" : searchName,
+                    "mean" : searchName
+                });
+
+              //  var conditions = $.toJSON(param);
+                var conditions =JSON.stringify(param);
+
+            }
+
+        return conditions;
+    }
+
+    //查询表格数据
+    //searchGrid 绑定的是一个javascript事件方法
+    function searchGrid() {
+        var queryParams = {
+            keyword : $("#keyword").val()
+        };
+        $('#datagrid').datagrid('load', queryParams);
+    }
+	// 搜索
+	function searchWord() {
+		searchGrid();
+	//	$('#datagrid').datagrid('reload');
 	}
-	
 	// 更新记录
  	function editWord(){
 	 	var row = $('#datagrid').datagrid('getSelected');
@@ -196,8 +227,8 @@
 <body class="easyui-layout" fit="true">
 	<div region="center" border="false" style="overflow: hidden;">
 		<!-- 记录信息列表 -->
-		<table id="datagrid" title="记录管理" class="easyui-datagrid" fit="true"
-			url="<%=basePath%>/word/getDataGridWord" toolbar="#toolbar" pagination="true"
+		<table id="datagrid" title="记录管理" class="easyui-datagrid"  fit="true"
+			url="<%=basePath%>/word/getDataGridWord"  toolbar="#toolbar" pagination="true"
 			fitColumns="true" singleSelect="true" rownumbers="true"
 			border="false" nowrap="false">
 			<thead>
@@ -215,6 +246,9 @@
 
 		<!-- 按钮 -->
 		<div id="toolbar">
+			<input	type="text"  id="keyword" name="keyword"  placeholder="请输入单词或者意思关键字"/>
+			 <a href="javascript:void(0);" class="easyui-linkbutton"
+				iconCls="icon-search"  plain="true"  onclick="searchWord();">查询</a>
 			<a href="javascript:void(0);" class="easyui-linkbutton"
 				iconCls="icon-add" plain="true" onclick="addWord();">新增记录</a> <a
 				href="javascript:void(0);" class="easyui-linkbutton"

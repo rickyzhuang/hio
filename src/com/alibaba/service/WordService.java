@@ -56,10 +56,10 @@ public class WordService {
 	 * @param page
 	 * @return
 	 */
-	public List<Word> getDataGridWord(PageHelper page) {
-		page.setStart((page.getPage()-1)*page.getRows());
-		page.setEnd(page.getPage()*page.getRows());
-		return wordMapper.getDataGridWord(page);  
+	public List<Word> getDataGridWord(Map<String,Object> map) {
+//		page.setStart((page.getPage()-1)*page.getRows());
+//		page.setEnd(page.getPage()*page.getRows());
+		return wordMapper.getDataGridWord(map);  
 	}
 
 	/**

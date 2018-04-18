@@ -44,6 +44,9 @@ public class Word {
 	private Timestamp createTime;
 	private String modifitor;
 	private String recodeDateStr;
+	private Timestamp modifyTime;
+	
+	private String keyword;
 	
 	public int getId() {
 		return id;
@@ -78,7 +81,7 @@ public class Word {
 	public Date getRecodeDate() {
 		return recodeDate;
 	}
-	public void setRecodeDate(Timestamp recodeDate) {
+	public void setRecodeDate(Date recodeDate) {
 		this.recodeDate = recodeDate;
 	}
 	public String getRemark() {
@@ -111,14 +114,22 @@ public class Word {
 	public void setModifyTime(Timestamp modifyTime) {
 		this.modifyTime = modifyTime;
 	}
-	private Timestamp modifyTime;
+
 
 	public String getRecodeDateStr() {
 		return recodeDateStr;
 	}
 	public void setRecodeDateStr(String recodeDateStr) {
 		this.recodeDateStr = recodeDateStr;
-		this.recodeDate=DateUtil.StrTotimestamp(recodeDateStr);
+		if(recodeDateStr!=null){
+			this.recodeDate=DateUtil.StrTotimestamp(recodeDateStr);
+		}
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 	
 	

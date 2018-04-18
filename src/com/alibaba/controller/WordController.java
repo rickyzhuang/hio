@@ -86,10 +86,14 @@ public class WordController {
 	@RequestMapping(value="/word/getDataGridWord", method = RequestMethod.POST)
 	public DataGrid getDataGridWord(PageHelper page,Word word) {
 		DataGrid dg = new DataGrid();
+		page.setStart((page.getPage()-1)*page.getRows());
+		page.setEnd(page.getPage()*page.getRows());
+		Map<String ,Object> map=new HashMap<String,Object>();
+		map.put("condition", word);
+		map.put("page", page);
 		dg.setTotal(wordService.getDataGridTotal(word));
-		List<Word> wordList = wordService.getDataGridWord(page);
+		List<Word> wordList = wordService.getDataGridWord(map);
 		dg.setRows(wordList);
-		
 		return dg;
 	}
 	
