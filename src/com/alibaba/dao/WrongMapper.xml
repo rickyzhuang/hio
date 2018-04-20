@@ -101,4 +101,14 @@
         delete from wrong where id = #{id}  
     </delete>  
     
+    
+  <select id="getByWrong"  parameterType="com.alibaba.model.Wrong"   resultType="com.alibaba.model.Wrong">
+  select * from wrong
+  where 1=1 
+   <if test="name !=null  and name !=''">
+            and  wrong.name=#{name}
+        </if>
+        limit 1
+  </select>
+    
 </mapper>

@@ -99,5 +99,11 @@ public class WrongService {
 		list=	jdbcTemplate.queryForList(sql);
 		return list;
 	}
-    
+	public Wrong selectByName(String name) {
+		Wrong wrong=new Wrong();
+		wrong.setName(name);
+		return wrongMapper.getByWrong(wrong);
+	/*	String sql="select * from wrong where name = '"+name+ "' limit 1";
+		return jdbcTemplate.queryForObject(sql,Wrong.class);*/
+	}  
 }

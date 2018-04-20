@@ -28,5 +28,7 @@ public interface WrongMapper {
 	public void editWrong(Wrong wrong);
 	
 	public void deleteById(@Param("id") int id);
+	
+	public Wrong  getByWrong(Wrong Wrong);
 
 }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -50,12 +51,20 @@ public class WordController {
         return "word/list";
     }
 	/**
-	 * 身高管理
+	 * 做题
 	 * @return
 	 */
-	@RequestMapping(value = "/word/height",method = RequestMethod.GET)
+	@RequestMapping(value = "/word/exam",method = RequestMethod.GET)
     public String wordHeight(Model model) {
-        return "word/height";
+		Long total=wordService.getDataGridTotal(null);
+		List<Word> list=new ArrayList<Word>();
+		Random r=new Random();
+		for(int i=0;i<10;i++){
+			int k=r.nextInt(total.intValue()-1);
+			list.add(wordService.findWordByid(k));
+		}
+		model.addAttribute("list",list);
+        return "word/exam";
     }
 	/**
 	 * 体重管理

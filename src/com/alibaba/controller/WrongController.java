@@ -92,10 +92,40 @@ public class WrongController {
 		map.put("condition", wrong);
 		map.put("page", page);
 		dg.setTotal(wrongService.getDataGridTotal(wrong));
+		if(dg.getTotal()<=0){
+			return dg;
+		}
 		List<Wrong> wrongList = wrongService.getDataGridWrong(map);
 		dg.setRows(wrongList);
 		return dg;
 	}
+	
+	
+	/**
+	 * 新增用户
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/wrong/addSingleWrong",method = RequestMethod.POST)
+    public Json addSingleWrong(Wrong wrong) {
+		Json j = new Json();
+		try {
+			Wrong old=wrongService.selectByName(wrong.getName());
+			if(old!=null){
+				old.setFrequency(old.getFrequency());
+				wrongService.edit(old);
+			}else{
+				wrongService.add(wrong);
+			}
+		
+            j.setSuccess(true);
+            j.setMsg("用户新增成功！");
+            j.setObj(wrong);
+        } catch (Exception e) {
+            j.setMsg(e.getMessage());
+        }
+        return j;
+    }
 	
 	/**
 	 * 新增用户
