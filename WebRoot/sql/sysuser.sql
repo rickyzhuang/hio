@@ -1,0 +1,16 @@
+INSERT INTO `sysuser` VALUES (1, 'admin', 'admin', NULL);
+INSERT INTO `sysuser` VALUES (2, 'tony', 'tony', NULL);
+INSERT INTO `sysuser` VALUES (3, 'test1', 'test1', NULL);
+INSERT INTO `sysuser` VALUES (4, 'test2', 'test2', NULL);
+INSERT INTO `sysuser` VALUES (5, 'test3', 'test3', 'sdasda@163.com');
+INSERT INTO `sysuser` VALUES (6, 'test4', 'test4', '322@qq.com');
+INSERT INTO `sysuser` VALUES (7, 'test5', 'test5', NULL);
+INSERT INTO `sysuser` VALUES (8, 'test6', 'test6', NULL);
+INSERT INTO `sysuser` VALUES (9, 'test7', 'test7', NULL);
+INSERT INTO `sysuser` VALUES (10, 'test8', 'test8', '11@qq.com');
+INSERT INTO `sysuser` VALUES (11, 'test9', 'test9', NULL);
+INSERT INTO `sysuser` VALUES (12, 'qqqq', '', '11@qq.com');
+INSERT INTO `sysuser` VALUES (13, 'asdasdsa', '', '11@qq.com');
+INSERT INTO `sysuser` VALUES (14, 'test9', '', NULL);
+INSERT INTO `sysuser` VALUES (15, 'test11', '', NULL);
+INSERT INTO `sysuser` VALUES (16, 'test12', '', NULL);

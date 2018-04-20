@@ -1,0 +1,12 @@
+INSERT INTO `sysmenu` VALUES (10, '系统管理', 0, 10, '', 'http://www.baidu.com');
+INSERT INTO `sysmenu` VALUES (20, '用户管理', 0, 20, '', '/user/list');
+INSERT INTO `sysmenu` VALUES (30, '宝贝成长管理', 0, 30, '', '/baby/list');
+INSERT INTO `sysmenu` VALUES (40, '词汇管理', 0, 40, '', '/word/list');
+INSERT INTO `sysmenu` VALUES (1010, '系统管理1', 10, 1010, '', 'http://www.baidu.com');
+INSERT INTO `sysmenu` VALUES (1020, '系统管理2', 10, 1020, '', 'http://www.baidu.com');
+INSERT INTO `sysmenu` VALUES (2010, '用户管理1', 20, 2010, '', 'http://www.baidu.com');
+INSERT INTO `sysmenu` VALUES (3010, '身高管理', 30, 3010, '', '/baby/height');
+INSERT INTO `sysmenu` VALUES (3020, '体重管理', 30, 3020, '', '/baby/weight');
+INSERT INTO `sysmenu` VALUES (3030, '头围管理', 30, 3030, '', '/baby/head');
+INSERT INTO `sysmenu` VALUES (4010, '错题管理', 40, 4010, '', '/wrong/list');
+INSERT INTO `sysmenu` VALUES (4020, '我要做题', 40, 4020, '', '/word/exam');
