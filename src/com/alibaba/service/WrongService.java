@@ -95,7 +95,7 @@ public class WrongService {
 	 */
 	public   List<Map<String,Object>> testQuery() throws Exception {
 		List list=null;
-		String sql="select * from wrong order by recode_Date  asc ";
+		String sql="select * from wrong order by  frequency desc,recode_date desc ";
 		list=	jdbcTemplate.queryForList(sql);
 		return list;
 	}

@@ -45,6 +45,7 @@
 		 <if test="condition.keyword !=null  and condition.keyword !=''">
             and  ( wrong.name like  CONCAT('%',#{condition.keyword},'%')   or  wrong.mean like  CONCAT('%',#{condition.keyword},'%') )
         </if>
+        order by  frequency desc,recode_date desc
         <if test="page !=null ">
             limit #{page.start},#{page.rows}
         </if>

@@ -28,12 +28,12 @@
 	   		 		 type: "POST",
 	   		 		 async: false,
 	   		 		 url: url,
-	   		 		 data: {
+	   		 		 data: JSON.stringify({
 	   		 			 "name":o.attr("answer"),
 	   		 			 "sound":o.attr("sound"),
 	   		 			 "mean":o.attr("mean"),
 	   		 			 "operator":$("#operator").val()
-	   		 		 },
+	   		 		 }),
 	   		 		 contentType: "application/json;charset=utf-8",
 	   		 		 dataType: "json",
 	   		 		 success: function (res) {

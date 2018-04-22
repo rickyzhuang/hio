@@ -21,10 +21,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.model.Word;
+import com.alibaba.model.Wrong;
 import com.alibaba.model.easyui.DataGrid;
 import com.alibaba.model.easyui.Json;
 import com.alibaba.model.easyui.PageHelper;
 import com.alibaba.service.WordService;
+import com.alibaba.service.WrongService;
 
 /**
  * Title:WordController
@@ -41,6 +43,9 @@ public class WordController {
 	@Resource
 	private WordService wordService;
 	
+	@Resource
+	private WrongService wrongService;
+	
 	
 	/**
 	 * 宝贝管理主页面
@@ -55,15 +60,31 @@ public class WordController {
 	 * @return
 	 */
 	@RequestMapping(value = "/word/exam",method = RequestMethod.GET)
-    public String wordHeight(Model model) {
-		Long total=wordService.getDataGridTotal(null);
+    public String wordHeight(Model model,String fromWrong) {
 		List<Word> list=new ArrayList<Word>();
-		Random r=new Random();
-		for(int i=0;i<10;i++){
-			int k=r.nextInt(total.intValue()-1);
-			list.add(wordService.findWordByid(k));
+		List<Wrong> list2=new ArrayList<Wrong>();
+		if(fromWrong==null||"".equals(fromWrong)){
+			Long total=wordService.getDataGridTotal(null);
+			Random r=new Random();
+			for(int i=0;i<10;i++){
+				int k=r.nextInt(total.intValue()-1);
+				list.add(wordService.findWordByid(k));
+			}
+			model.addAttribute("list",list);
+		}else{
+			Long total2=wrongService.getDataGridTotal(null);
+			Random r=new Random();
+			int length=total2.intValue()>=10?10:total2.intValue();
+			Map<String,Object> map= new HashMap<String, Object>();
+			map.put("condition", new Wrong());
+			List<Wrong> wrongList = wrongService.getDataGridWrong(map);
+			for(int i=0;i<length;i++){
+				int k=r.nextInt(total2.intValue()-1);
+				list2.add(wrongList.get(k));
+			}
+			model.addAttribute("list",list2);
 		}
-		model.addAttribute("list",list);
+		
         return "word/exam";
     }
 	/**

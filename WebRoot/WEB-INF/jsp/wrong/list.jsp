@@ -141,14 +141,15 @@
 		 		 dataType: "json",
 		 		 success: function (data) {
 		 			for ( var i = 0; i < data.length; i++) {
-						var x=dateUtil.toTimeStamp(data[i].recode_date);
-						var y1=data[i].height;
-						var y2=data[i].weight;
-						var y3=data[i].head;
+						//var x=dateUtil.toTimeStamp(data[i].recode_date);
+						var x=data[i].name;
+						var y1=data[i].frequency;
+						var y2=data[i].mean;
+						//var y3=data[i].mean;
 						xdata.push(x);
 						ydata1.push(y1);
 						ydata2.push(y2);
-						ydata3.push(y3);
+						//ydata3.push(y3);
 					}
 		 		 }
 		 		
@@ -163,7 +164,7 @@
         		        trigger: 'axis'
         		    },
         		    legend: {
-        		        data:['身高','体重','头围']
+        		        data:['单词','次数']
         		    },
         		    grid: {
         		        left: '3%',
@@ -191,26 +192,26 @@
         		    ],
         		    series : [
         		        {
-        		            name:'身高',
+        		            name:'次数',
         		            type:'line',
         		            stack: '总量',
         		           // data:[120, 132, 101, 134, 90, 230, 210]
         		            data:ydata1
         		        },
         		        {
-        		            name:'体重',
+        		            name:'意思',
         		            type:'line',
         		            stack: '总量',
         		         // 	data:[220, 182, 191, 234, 290, 330, 310]
         		      	  	data:ydata2
         		        },
-        		        {
+        		        /* {
         		            name:'头围',
         		            type:'line',
         		            stack: '总量',
-        		        //    data:[150, 232, 201, 154, 190, 330, 410]
+        		       
         		        	data:ydata3
-        		        }
+        		        } */
         		       
         		    ]
         		};

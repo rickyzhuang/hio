@@ -5,6 +5,7 @@ package com.alibaba.controller;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -107,14 +109,16 @@ public class WrongController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/wrong/addSingleWrong",method = RequestMethod.POST)
-    public Json addSingleWrong(Wrong wrong) {
+    public Json addSingleWrong(@RequestBody Wrong wrong) {
 		Json j = new Json();
+		wrong.setRecodeDate(new Date());
 		try {
 			Wrong old=wrongService.selectByName(wrong.getName());
 			if(old!=null){
-				old.setFrequency(old.getFrequency());
+				old.setFrequency(old.getFrequency()+1);
 				wrongService.edit(old);
 			}else{
+				wrong.setFrequency(1);
 				wrongService.add(wrong);
 			}
 		
