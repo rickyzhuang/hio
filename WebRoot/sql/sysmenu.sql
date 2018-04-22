@@ -10,3 +10,4 @@ INSERT INTO `sysmenu` VALUES (3020, '体重管理', 30, 3020, '', '/baby/weight'
 INSERT INTO `sysmenu` VALUES (3030, '头围管理', 30, 3030, '', '/baby/head');
 INSERT INTO `sysmenu` VALUES (4010, '错题管理', 40, 4010, '', '/wrong/list');
 INSERT INTO `sysmenu` VALUES (4020, '我要做题', 40, 4020, '', '/word/exam');
+INSERT INTO `sysmenu` VALUES (4030, '错题复习', 40, 4030, '', '/word/exam?fromWrong=1');

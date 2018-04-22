@@ -10,3 +10,4 @@ INSERT INTO `role_menu` VALUES (12, 1, 3030);
 INSERT INTO `role_menu` VALUES (13, 2, 40);
 INSERT INTO `role_menu` VALUES (14, 2, 4010);
 INSERT INTO `role_menu` VALUES (15, 2, 4020);
+INSERT INTO `role_menu` VALUES (16, 2, 4030);
